@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
+
+
+
+</head>
+<body>
+
+<div id='map' style='width: 100%; height: 1000px;'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1Ijoiam1jY2FydGgiLCJhIjoiVm1LZWtkayJ9.AiRwg5egm1ob26ohSiCgbg';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9',
+    center: [-80.52,43.48],
+    zoom:13
+});
+map.on('load', function () {
+map.addSource('w-close', { type: 'geojson', data: 'https://opendata.arcgis.com/datasets/4af7c514f77b48db93ce0d0649a31aa9_0.geojson' });
+
+map.addLayer({ 
+	'id': 'wCloseLayer',
+	'type': 'line', 
+	'source': 'w-close',
+	"layout": { 
+		"line-join": "round", 
+		"line-cap": "round" 
+	}, 
+	"paint": { 
+		"line-color": "#888", 
+		"line-width": 8 
+	}
+});
+});
+</script>
+
+</body>
+</html>
+
+
