@@ -20,7 +20,7 @@ var map = new mapboxgl.Map({
 });
 map.on('load', function () {
 map.addSource('w-close', { type: 'geojson', data: 'https://opendata.arcgis.com/datasets/4af7c514f77b48db93ce0d0649a31aa9_0.geojson' });
-
+map.addSource('k-close', { type: 'geojson', data: 'https://opendata.arcgis.com/datasets/c500d56ecbec41a6b96e3e264ce65d22_0.geojson' });
 map.addLayer({ 
 	'id': 'wCloseLayer',
 	'type': 'line', 
@@ -34,6 +34,21 @@ map.addLayer({
 		"line-width": 8 
 	}
 });
+
+map.addLayer({ 
+	'id': 'kCloseLayer',
+	'type': 'line', 
+	'source': 'k-close',
+	"layout": { 
+		"line-join": "round", 
+		"line-cap": "round" 
+	}, 
+	"paint": { 
+		"line-color": "#888", 
+		"line-width": 8 
+	}
+});
+
 });
 </script>
 
